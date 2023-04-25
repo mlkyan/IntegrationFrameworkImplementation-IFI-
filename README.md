@@ -1,58 +1,88 @@
-# TODO!!! Name of your module/lib 
-
-## Module/Lib development
-
-Instruction: [lib development](/doc/ct-lib-development.md)
-
-New version release: [release-version-instruction.md](/doc/release-version-instruction.md)
-
-## Package Installation
-
-Instruction: [package info](/doc/package-info.txt)
-
-## Release Notes:
-
-[release-notes.md](/doc/release-notes.md)
+# Integration Framework Implementation (IFI)
 
 ## Description
 
-TODO!!! Add full description of this module/lib
+A simple and generic integration framework for making Salesforce Callouts via HTTP services
 
-**Industry**: TODO!!! add industry tags here for, example: HealthCare, Pharma, e.t.c or use Any if your lib is common and applicable in different industries 
+**Industry**: Any
 
 **Key Features**:
-1) TODO!!! Describe feature 1
-2) TODO!!! Describe feature 2
-3) ...
+1) Allows to easily set up new integration callouts (REST/SOAP-based)
+2) Has a support for logging each callout into custom object
 
-**Technical Stack**: TODO!!! For example: Apex, Heroku e.t.c.
 
-## Design diagram
-
-TODO!!! Create diagram, publish it and put URL here instead dummy diagram
-
-![Lib Diagram](https://lucid.app/publicSegments/view/d994cc89-96a5-41d5-9d5a-c1980b462563/image.jpeg)
+**Technical Stack**: Apex, REST API, SOAP API
 
 ## Class Diagram
 
-TODO!!! Create class diagram, publish it and put URL here instead dummy class diagram:
+![IFI_ClassDIagram drawio](https://user-images.githubusercontent.com/54051511/234403105-5ddcdf9b-2f67-47e0-b460-67d5e3106d56.png)
 
-![Class Diagram](https://lucid.app/publicSegments/view/bedae83e-989e-42f4-a12d-02a5d529396b/image.jpeg)
 
+**NOTE** :
+IFI_CalloutsExecutor is a Singleton, so rather than initializing via 'new' keyword each time, call by IL_CalloutExecutor.getInstance();
 
 ## Data Model
 
-TODO!!! Add used database tables with fields end descriptions. Describe purpose of every table.
-
+| Type          | API Name                | Description                                                             |
+|---------------|-------------------------|-------------------------------------------------------------------------|
+| Custom Object | Integration_Log__c      | Used for logging any callout results, both successful and unsuccessful. |
+| Custom Field  | Callout_Class__c        | Name of the callout class.                                              |
+| Custom Field  | Callout_Duration__c     | Callout duration in milliseconds.                                       |
+| Custom Field  | Endpoint_URL__c         | Callout endpoint URL.                                                   |
+| Custom Field  | Error_Message__c        | Error message.                                                          |
+| Custom Field  | Request_Body__c         | Text body of callout request.                                           |
+| Custom Field  | Response_Body__c        | Text body of callout response.                                          |
+| Custom Field  | Response_Status_Code__c | Callout response status code.                                           |
+| Custom Field  | Success__c              | True if callout executed successfully.                                  |
 
 ## Permission Sets
 
-TODO!!! Used permission sets descriptions
+N/A
 
 ## Configuration
 
-TODO!!! Describe used configuration tables and steps for configuration of your module/lib
+N/A
 
 ## Code examples
+Extending a new callout implementation: 
 
-TODO!!! Add code examples here. This examples must clarify how to use your module/lib 
+    global without sharing class IFI_XXXCallout implements IFI_InterfaceCallout {
+    private static final String ENDPOINT_URL = 'ADD_YOUR_URL_HERE';
+    private Map<String, String> hiddenParams = new Map<String, String>();
+    private Integer timeout = 120000; // default
+
+
+    public IFI_XXXCallout() {
+    }
+
+    public IFI_XXXCallout(Integer timeout) {
+        this.timeout = timeout;
+    }
+
+    public Type getType() {
+        return IFI_XXXCallout.class;
+    }
+
+    public String getHTTPMethod() {
+        return IFI_HTTPMethod.GET.name(); // add HTTP method here 
+    }
+
+    public String getEndpointURL() {
+        return ENDPOINT_URL;
+    }
+
+    public Integer getTimeout() {
+        return timeout;
+    }
+
+    public String buildRequestBody() { // construct XML/JSON request body here
+        return '';
+    }
+
+    public Object parseResponseBody(String responseBody) { // parse incoming response body here
+    }
+
+    public Map<String, String> getHiddenParams() { // use for hiding any parameters in requests/responses for security purposes, before logging into database
+        return hiddenParams;
+    }
+    }
