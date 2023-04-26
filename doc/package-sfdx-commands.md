@@ -3,23 +3,22 @@
 ### 1 Create a Package
 
 ```sh
-sfdx package:create -n your-lib-name -d "Lib description ..." -t Unlocked -r force-app/lib-dir --nonamespace -v targetDevHub
+sfdx package:create --name integration-framework --description "Integration Framework Implementation (IFI)" --package-type Unlocked --path force-app --no-namespace --target-hub-org targetDevHub
 ```
 
 ### 2 Create a new version
 
 ```sh
-sfdx package:version:create -p your-lib-name -d force-app/lib-dir -k DgE6Gf9GzWd -w 10 -c -v targetDevHub
+sfdx package:version:create -p integration-framework -d force-app -k test1234 -w 10 -c -v targetDevHub
 ```
 
 #### 2.1 Check code coverage:
 
 ```sh
-sfdx force:package:version:report --package your-lib-name@1.0.0-1 --verbose
+sfdx force:package:version:report --package integration-framework@1.0.0-1 --verbose
 ```
 
 ### 3 Promote the version
 
 ```sh
-sfdx package:version:promote -p your-lib-name@1.0.0-1 -v targetDevHub
-```
+sfdx package:version:promote -p integration-framework@1.0.0-1 -v targetDevHub```
