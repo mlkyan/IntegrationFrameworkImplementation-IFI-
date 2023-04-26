@@ -1,12 +1,12 @@
 {
   "packageDirectories": [
     {
-      "path": "force-app/integration-framework",
-       "package": "integration-framework",
-      "versionName": "Version 1.0",
-      "versionNumber": "1.0.0.NEXT",
-
-      "default": true
+      "path": "force-app",
+      "package": "integration-framework",
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "default": false,
+      "versionDescription": "Integration Framework Implementation (IFI)"
     },
     {
       "path": "force-app/integration-framework-demo",
@@ -16,5 +16,8 @@
   "name": "IntegrationFramework",
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "55.0"
+  "sourceApiVersion": "55.0",
+  "packageAliases": {
+    "integration-framework": "0Ho8d00000000VHCAY"
+  }
 }
