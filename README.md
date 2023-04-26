@@ -15,7 +15,7 @@ A simple and generic integration framework for making Salesforce Callouts via HT
 
 ## Class Diagram
 
-![IFI_ClassDIagram drawio](https://user-images.githubusercontent.com/54051511/234403105-5ddcdf9b-2f67-47e0-b460-67d5e3106d56.png)
+![IFI_ClassDIagramV2 drawio](https://user-images.githubusercontent.com/54051511/234540607-4c4f11d7-0375-49f5-9748-80236290d1c1.png)
 
 
 **NOTE** :
