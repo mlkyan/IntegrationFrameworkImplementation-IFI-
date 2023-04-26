@@ -1,15 +1,15 @@
-Package install key: SET_PACKAGE_PASSWORD_HERE!!!
+Package install key: test1234!!!
 
 Install package command example:
 
-sfdx force:package:install --wait 10 --publishwait 10 --package SET_PACKAGE_ID_HERE -k SET_PACKAGE_PASSWORD_HERE --noprompt -a package -u targetOrg
+sfdx force:package:install --wait 10 --publishwait 10 --package 0Ho8d00000000VHCAY -k test1234 --noprompt -a package -u targetOrg
 
 
 Install URL Prod:
 
-https://login.salesforce.com/packaging/installPackage.apexp?p0=SET_PACKAGE_ID_HERE
+https://login.salesforce.com/packaging/installPackage.apexp?p0=0Ho8d00000000VHCAY
 
 
 Install URL Sandboxes:
 
-https://test.salesforce.com/packaging/installPackage.apexp?p0=SET_PACKAGE_ID_HERE
+https://test.salesforce.com/packaging/installPackage.apexp?p0=0Ho8d00000000VHCAY
