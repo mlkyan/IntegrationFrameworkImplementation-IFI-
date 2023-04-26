@@ -1,8 +1,12 @@
 {
   "packageDirectories": [
     {
-      "path": "force-app",
+      "path": "force-app/integration-framework",
       "default": true
+    },
+    {
+      "path": "force-app/integration-framework-demo",
+      "default": false
     }
   ],
   "name": "IntegrationFramework",
