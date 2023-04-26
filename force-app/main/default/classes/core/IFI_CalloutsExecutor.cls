@@ -40,6 +40,10 @@ public class IFI_CalloutsExecutor {
         insert logs;
         logs = new List<Integration_Log__c>();
     }
+                    
+    public List<Integration_Log__c> getLogs() {
+        return logs;
+    }
 
     private HttpRequest initHttpRequest(IFI_InterfaceCallout callout) {
         HttpRequest request = new HttpRequest();
