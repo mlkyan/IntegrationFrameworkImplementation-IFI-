@@ -2,6 +2,10 @@
   "packageDirectories": [
     {
       "path": "force-app/integration-framework",
+       "package": "integration-framework",
+      "versionName": "Version 1.0",
+      "versionNumber": "1.0.0.NEXT",
+
       "default": true
     },
     {
