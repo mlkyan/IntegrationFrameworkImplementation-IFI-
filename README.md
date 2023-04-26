@@ -48,14 +48,14 @@ Extending a new callout implementation:
 
     global without sharing class IFI_XXXCallout implements IFI_InterfaceCallout {
     private static final String ENDPOINT_URL = 'ADD_YOUR_URL_HERE';
-    private Map<String, String> hiddenParams = new Map<String, String>();
+    private Map<String, String> hiddenParams = new Map<String, String>(); // populate with parameters that need hiding in request/response
     private Integer timeout = 120000; // default
 
 
     public IFI_XXXCallout() {
     }
 
-    public IFI_XXXCallout(Integer timeout) {
+    public IFI_XXXCallout(Integer timeout) { / override default timeout via constructor if needed
         this.timeout = timeout;
     }
 
